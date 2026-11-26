@@ -1373,4 +1373,5 @@ def main():
         bpy.ops.wm.save_as_mainfile(filepath=os.path.join(HERE, "walk_in_field.blend"))
 
 
-main()
+if __name__ == "__main__":
+    main()

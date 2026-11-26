@@ -44,3 +44,23 @@ Without `--still` or `--render`, the scene is only built and saved to `walk_in_f
 | 0–15 s | Walk along the road, tracked by a slowly pushing-in camera |
 | 5–9 s | A bird flies overhead; the walker follows it with his head |
 | ~9.5–11.8 s | He raises the cup, tips his head back and takes a sip |
+
+## Clarinet assembly (20 seconds)
+
+[make_clarinet_assembly.py](make_clarinet_assembly.py) builds a separate scene at 30 fps
+(600 frames). A seated woman with long hair, glasses, a teal blouse and a long black skirt
+takes the clarinet pieces from an open case on her lap, fits them together, and holds up
+the finished instrument. Her body, face, hair and hands are lofted meshes, and her arms are skinned
+to an armature solved with two-bone IK each frame; it reuses the mesh helpers from
+`make_walk_in_field.py`, so keep both scripts in the same folder.
+
+```powershell
+# Save the editable scene as clarinet_assembly.blend
+& $blender -b -P make_clarinet_assembly.py
+
+# Test the opening, assembly and final pose with half-resolution stills
+& $blender -b -P make_clarinet_assembly.py -- --still 1 255 600 --preview
+
+# Render the full animation to render/clarinet_assembly0001-0600.mp4
+& $blender -b -P make_clarinet_assembly.py -- --render
+```
